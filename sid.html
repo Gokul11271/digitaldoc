@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddha Health Awareness</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+        body{
+    background: #3399ff;
+  }
+  
+  
+  .circle{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+  }
+  
+  .small{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+  
+  .medium{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+  
+  .large{
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+  }
+  
+  .xlarge{
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+  }
+  
+  .xxlarge{
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+  }
+  
+  .shade1{
+    opacity: 0.2;
+  }
+  .shade2{
+    opacity: 0.5;
+  }
+  
+  .shade3{
+    opacity: 0.7;
+  }
+  
+  .shade4{
+    opacity: 0.8;
+  }
+  
+  .shade5{
+    opacity: 0.9;
+  }
+  
+  @keyframes ripple{
+    0%{
+      transform: scale(0.8);
+    }
+    
+    50%{
+      transform: scale(1.2);
+    }
+    
+    100%{
+      transform: scale(0.8);
+    }
+  }
+  body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+     </div>
+
+<div id="container">
+    <h2>Siddha Health Awareness</h2>
+    <label for="healthIssue">Enter Your Health Issue:</label>
+    <input type="text" id="healthIssue" placeholder="E.g., Headache, Digestive Issues, etc.">
+    <button onclick="getSiddhaSuggestions()">Get Siddha Suggestions</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function getSiddhaSuggestions() {
+        var healthIssue = document.getElementById('healthIssue').value;
+        var resultContainer = document.getElementById('result');
+
+        // Simple example, you can replace this with actual Siddha suggestions logic
+        var suggestions = getSiddhaSuggestionsLogic(healthIssue);
+
+        // Display the suggestions
+        resultContainer.innerHTML = '<h3>Siddha Suggestions:</h3>' + suggestions;
+    }
+
+    function getSiddhaSuggestionsLogic(healthIssue) {
+        // Replace this with your Siddha suggestions logic
+        // For demonstration purposes, a simple static response is provided
+        var staticSuggestions = {
+            'Headache': [
+                'Practice deep breathing exercises.',
+                'Consume a mixture of ginger and honey.',
+                'Massage your temples with coconut oil.',
+                'Stay hydrated.',
+                'Get adequate rest and sleep.'
+            ],
+            'Digestive Issues': [
+                'Include fennel seeds in your diet.',
+                'Chew your food thoroughly.',
+                'Drink warm water with a pinch of ginger before meals.',
+                'Avoid heavy and oily foods.',
+                'Practice gentle yoga poses to aid digestion.'
+            ],
+            'Stress and Anxiety': [
+                'Practice meditation and mindfulness.',
+                'Take a break and spend time in nature.',
+                'Consume a herbal tea with calming properties.',
+                'Engage in relaxing activities like reading or listening to music.',
+                'Establish a regular sleep routine.'
+            ],
+            'Common Cold': [
+                'Drink warm water with honey and lemon.',
+                'Inhale steam with eucalyptus oil.',
+                'Include turmeric in your diet.',
+                'Get plenty of rest and sleep.',
+                'Stay hydrated.'
+            ],
+            'Joint Pain': [
+                'Apply warm sesame oil on the affected joints.',
+                'Practice gentle joint exercises.',
+                'Include anti-inflammatory foods in your diet.',
+                'Stay physically active without straining the joints.',
+                'Consider herbal supplements with anti-inflammatory properties.'
+            ],
+            'Insomnia': [
+                'Create a calming bedtime routine.',
+                'Avoid caffeine and heavy meals before bedtime.',
+                'Practice relaxation techniques such as deep breathing.',
+                'Ensure a comfortable sleep environment.',
+                'Limit screen time before going to bed.'
+            ],
+            'Indigestion': [
+                'Include cumin seeds in your diet.',
+                'Consume a mixture of ginger and lime juice.',
+                'Practice yoga poses that aid digestion.',
+                'Eat smaller, more frequent meals.',
+                'Avoid overeating and late-night meals.'
+            ],
+            'Skin Issues': [
+                'Apply a paste of neem leaves to affected areas.',
+                'Stay hydrated to promote healthy skin.',
+                'Consume a diet rich in fruits and vegetables.',
+                'Avoid excessive sun exposure.',
+                'Practice stress-reducing activities for overall skin health.'
+            ],
+            'Hypertension': [
+                'Maintain a low-sodium diet.',
+                'Engage in regular physical activity.',
+                'Include garlic in your diet.',
+                'Practice deep breathing exercises.',
+                'Monitor blood pressure regularly and seek medical advice.'
+            ],
+            'Respiratory Issues': [
+                'Consume a decoction of basil leaves and honey.',
+                'Avoid exposure to pollutants and allergens.',
+                'Practice deep breathing exercises.',
+                'Stay well-hydrated with warm fluids.',
+                'Consider using a humidifier for respiratory comfort.'
+            ],
+            // Additional Health Issues (To be updated based on current trends)
+            'Diabetes': [
+                'Maintain a balanced diet with controlled sugar intake.',
+                'Engage in regular physical activity.',
+                'Include bitter gourd and fenugreek in your diet.',
+                'Stay hydrated.',
+                'Monitor blood sugar levels regularly.'
+            ],
+            'Heart Health': [
+                'Consume a heart-healthy diet with fruits and vegetables.',
+                'Engage in regular cardiovascular exercises.',
+                'Include omega-3 fatty acids in your diet.',
+                'Limit saturated fats and cholesterol intake.',
+                'Monitor blood pressure and cholesterol levels.'
+            ],
+            'Mental Well-being': [
+                'Practice mindfulness and meditation.',
+                'Engage in activities you enjoy.',
+                'Connect with friends and family for emotional support.',
+                'Seek professional help if needed.',
+                'Prioritize self-care and stress management.'
+            ],
+            'Eye Health': [
+                'Take regular breaks when using digital devices.',
+                'Consume a diet rich in vitamins and antioxidants.',
+                'Protect your eyes from harsh sunlight.',
+                'Ensure proper lighting when reading or working.',
+                'Get regular eye check-ups.'
+            ],
+            'Obesity': [
+                'Maintain a balanced diet with portion control.',
+                'Engage in regular physical activity.',
+                'Stay hydrated and limit sugary beverage consumption.',
+                'Include fiber-rich foods in your diet.',
+                'Consult a healthcare professional for personalized weight management.'
+            ],
+            'Osteoporosis': [
+                'Consume a calcium-rich diet with dairy products and leafy greens.',
+                'Engage in weight-bearing exercises.',
+                'Get regular exposure to sunlight for vitamin D.',
+                'Avoid excessive alcohol and tobacco consumption.',
+                'Consult a healthcare professional for bone health assessments.'
+            ],
+            'Gastrointestinal Disorders': [
+                'Maintain a high-fiber diet with fruits and vegetables.',
+                'Stay hydrated with plenty of water.',
+                'Avoid spicy and greasy foods that can irritate the stomach.',
+                'Practice stress-reducing techniques.',
+                'Seek medical advice for persistent gastrointestinal issues.'
+            ],
+            'Allergies': [
+                'Identify and avoid allergens that trigger symptoms.',
+                'Keep living spaces clean and dust-free.',
+                'Use air purifiers to reduce indoor allergens.',
+                'Take prescribed allergy medications as directed.',
+                'Consult an allergist for personalized allergy management.'
+            ],
+            'Cancer Prevention': [
+                'Adopt a healthy lifestyle with a balanced diet and regular exercise.',
+                'Limit exposure to tobacco and alcohol.',
+                'Protect your skin from excessive sun exposure.',
+                'Undergo regular screenings for early detection.',
+                'Stay informed about family medical history and potential risk factors.'
+            ],
+        };
+
+        var suggestionsList = staticSuggestions[healthIssue] || ['No suggestions available for this health issue.'];
+
+        // Convert the suggestions to an unordered list
+        var listItems = suggestionsList.map(function (item) {
+            return '<li>' + item + '</li>';
+        });
+
+        return '<ul>' + listItems.join('') + '</ul>';
+    }
+</script>
+
+</body>
+</html>

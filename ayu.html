@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Health Awareness</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #suggestions {
+            margin-top: 20px;
+            text-align: left;
+        }
+        body{
+    background: #3399ff;
+  }
+  
+  
+  .circle{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+  }
+  
+  .small{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+  
+  .medium{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+  
+  .large{
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+  }
+  
+  .xlarge{
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+  }
+  
+  .xxlarge{
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+  }
+  
+  .shade1{
+    opacity: 0.2;
+  }
+  .shade2{
+    opacity: 0.5;
+  }
+  
+  .shade3{
+    opacity: 0.7;
+  }
+  
+  .shade4{
+    opacity: 0.8;
+  }
+  
+  .shade5{
+    opacity: 0.9;
+  }
+  
+  @keyframes ripple{
+    0%{
+      transform: scale(0.8);
+    }
+    
+    50%{
+      transform: scale(1.2);
+    }
+    
+    100%{
+      transform: scale(0.8);
+    }
+  }
+  body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+     </div>
+    <div id="container">
+        <h2>Ayurvedic Health Awareness</h2>
+        <label for="healthIssue">Select Your Health Issue:</label>
+        <select id="healthIssue">
+            <option value="Digestive Issues">Digestive Issues</option>
+            <option value="Stress">Stress</option>
+            <option value="Insomnia">Insomnia</option>
+            <option value="Joint Pain">Joint Pain</option>
+            <option value="Headache">Headache</option>
+            <option value="Skin Problems">Skin Problems</option>
+            <option value="Respiratory Issues">Respiratory Issues</option>
+            <option value="Allergies">Allergies</option>
+            <option value="Hormonal Imbalance">Hormonal Imbalance</option>
+            <option value="Weight Management">Weight Management</option>
+            <option value="Low Energy">Low Energy</option>
+            <option value="Blood Pressure">Blood Pressure</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Anxiety">Anxiety</option>
+            <option value="Hair Loss">Hair Loss</option>
+        </select>
+        <button onclick="getAyurvedicSuggestions()">Get Ayurvedic Suggestions</button>
+        <div id="suggestions"></div>
+    </div>
+
+    <script>
+        const ayurvedicSuggestions = {
+            "Digestive Issues": [
+                "Practice mindful eating and avoid overeating.",
+                "Include ginger in your diet for improved digestion.",
+                "Drink warm water throughout the day.",
+                "Chew fennel seeds after meals.",
+                "Consume aloe vera juice for gut health."
+            ],
+            "Stress": [
+                "Practice deep breathing exercises.",
+                "Try meditation or yoga to manage stress.",
+                "Include ashwagandha in your diet.",
+                "Take short breaks for relaxation during work.",
+                "Establish a regular sleep schedule."
+            ],
+            "Insomnia": [
+                "Create a calming bedtime routine.",
+                "Avoid caffeine and electronics before bedtime.",
+                "Practice relaxation techniques like meditation.",
+                "Ensure your sleep environment is comfortable and dark.",
+                "Consider herbal teas like chamomile for better sleep."
+            ],
+            "Joint Pain": [
+                "Include turmeric in your diet for its anti-inflammatory properties.",
+                "Practice gentle exercises like yoga or swimming.",
+                "Apply warm compresses to affected joints.",
+                "Consume Omega-3 fatty acids for joint health.",
+                "Maintain a healthy weight to reduce stress on joints."
+            ],
+            "Headache": [
+                "Stay hydrated by drinking plenty of water.",
+                "Apply a cold or warm compress to your forehead.",
+                "Practice relaxation techniques like deep breathing.",
+                "Identify and avoid headache triggers.",
+                "Consider peppermint oil for headache relief."
+            ],
+            "Skin Problems": [
+                "Stay hydrated to keep your skin moisturized.",
+                "Avoid harsh chemical-based skincare products.",
+                "Include neem and aloe vera in your skincare routine.",
+                "Manage stress to prevent skin flare-ups.",
+                "Consume foods rich in antioxidants for skin health."
+            ],
+            "Respiratory Issues": [
+                "Practice deep breathing exercises.",
+                "Include ginger and honey in your diet.",
+                "Stay away from smoke and pollutants.",
+                "Maintain a clean and dust-free living environment.",
+                "Consider herbal teas like licorice for respiratory health."
+            ],
+            "Allergies": [
+                "Identify and avoid allergens triggering your symptoms.",
+                "Keep windows closed during high pollen seasons.",
+                "Use air purifiers in your home.",
+                "Include local honey in your diet.",
+                "Consider herbal supplements like quercetin for allergy relief."
+            ],
+            "Hormonal Imbalance": [
+                "Maintain a balanced and nutritious diet.",
+                "Manage stress through meditation or yoga.",
+                "Include flaxseeds for hormonal balance.",
+                "Stay physically active with regular exercise.",
+                "Consult with an Ayurvedic practitioner for personalized guidance."
+            ],
+            "Weight Management": [
+                "Follow a balanced diet with portion control.",
+                "Include metabolism-boosting spices like cayenne pepper.",
+                "Engage in regular physical activity.",
+                "Stay hydrated by drinking water throughout the day.",
+                "Consider herbal teas like green tea for weight management."
+            ],
+            "Low Energy": [
+                "Ensure you are getting enough quality sleep.",
+                "Include energy-boosting foods like nuts and fruits.",
+                "Practice regular exercise to improve energy levels.",
+                "Stay hydrated by drinking water and herbal teas.",
+                "Consider adaptogenic herbs like ashwagandha for energy support."
+            ],
+            "Blood Pressure": [
+                "Follow a low-sodium diet rich in fruits and vegetables.",
+                "Engage in regular aerobic exercise.",
+                "Include garlic in your diet for blood pressure regulation.",
+                "Practice stress management techniques like meditation.",
+                "Monitor your blood pressure regularly and consult a healthcare professional."
+            ],
+            "Diabetes": [
+                "Follow a balanced diet with controlled carbohydrate intake.",
+                "Engage in regular physical activity to manage blood sugar levels.",
+                "Include bitter melon and fenugreek in your diet.",
+                "Stay hydrated and avoid sugary beverages.",
+                "Monitor blood sugar levels regularly and consult a healthcare professional."
+            ],
+            "Anxiety": [
+                "Practice mindfulness meditation for anxiety relief.",
+                "Include chamomile tea in your routine for relaxation.",
+                "Engage in regular physical activity to reduce anxiety.",
+                "Establish a routine for better stress management.",
+                "Consult with an Ayurvedic practitioner for personalized anxiety support."
+            ],
+            "Hair Loss": [
+                "Maintain a healthy and balanced diet for hair health.",
+                "Avoid excessive heat styling and harsh chemical treatments.",
+                "Massage your scalp with warm oil for improved circulation.",
+                "Include biotin-rich foods for hair strength.",
+                "Consider herbal remedies like amla for hair growth."
+            ]
+        };
+
+        function getAyurvedicSuggestions() {
+            const healthIssue = document.getElementById('healthIssue').value;
+            const suggestionsContainer = document.getElementById('suggestions');
+
+            // Clear previous suggestions
+            suggestionsContainer.innerHTML = '';
+
+            // Add Ayurvedic suggestions based on health issue
+            if (healthIssue.trim() !== '') {
+                suggestionsContainer.innerHTML = `<h3>Ayurvedic Suggestions for ${healthIssue}:</h3>`;
+                
+                ayurvedicSuggestions[healthIssue].forEach(suggestion => {
+                    const suggestionElement = document.createElement('p');
+                    suggestionElement.innerHTML = `&bull; ${suggestion}`;
+                    suggestionsContainer.appendChild(suggestionElement);
+                });
+            } else {
+                suggestionsContainer.innerHTML = '<p>Please select a valid health issue.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

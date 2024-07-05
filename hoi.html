@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeopathy Health Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Homeopathy Health Suggestions</h1>
+        <label for="healthIssue">Select Health Issue:</label>
+        <select id="healthIssue">
+            <!-- Options will be added dynamically using JavaScript -->
+        </select>
+        <button onclick="getSuggestions()">Get Suggestions</button>
+        <ul id="suggestionsList">
+            <!-- Suggestions will be added dynamically using JavaScript -->
+        </ul>
+
+        <script>
+            // Health issues and homeopathic suggestions
+            const healthIssues = [
+                {
+                    issue: "Common Cold",
+                    suggestions: [
+                        "Allium Cepa for runny nose with watery eyes.",
+                        "Arsenicum Album for flu-like symptoms and restlessness.",
+                        "Gelsemium for weakness and fatigue during cold.",
+                        "Natrum Mur for sneezing and nasal congestion.",
+                        "Nux Vomica for congestion and irritability."
+                    ]
+                },
+                {
+                    issue: "Headache",
+                    suggestions: [
+                        "Belladonna for throbbing and intense headaches.",
+                        "Bryonia for headaches worsened by movement.",
+                        "Ignatia for headaches due to emotional stress.",
+                        "Nux Vomica for headaches from overindulgence.",
+                        "Sepia for headaches with a dragging sensation."
+                    ]
+                },
+                {
+                    issue: "Insomnia",
+                    suggestions: [
+                        "Coffea for difficulty falling asleep due to an overactive mind.",
+                        "Passiflora Incarnata for restless sleep with frequent waking.",
+                        "Nux Vomica for insomnia due to stress and overwork.",
+                        "Arsenicum Album for anxiety-related insomnia.",
+                        "Cypripedium Pubescens for difficulty staying asleep."
+                    ]
+                },
+                {
+                    issue: "Digestive Issues",
+                    suggestions: [
+                        "Arsenicum Album for indigestion and anxiety.",
+                        "Nux Vomica for bloating and constipation from overeating.",
+                        "Lycopodium for gas and belching after meals.",
+                        "Pulsatilla for digestive issues with changeable symptoms.",
+                        "Carbo Vegetabilis for flatulence and indigestion."
+                    ]
+                },
+                {
+                    issue: "Stress and Anxiety",
+                    suggestions: [
+                        "Aconitum Napellus for acute anxiety and panic attacks.",
+                        "Argentum Nitricum for nervousness and anticipatory anxiety.",
+                        "Ignatia for anxiety due to grief or emotional upset.",
+                        "Lycopodium for performance anxiety and fear of failure.",
+                        "Natrum Mur for anxiety with a need for solitude."
+                    ]
+                },
+                {
+                    issue: "Allergies",
+                    suggestions: [
+                        "Apis Mellifica for allergic reactions with swelling and redness.",
+                        "Arsenicum Album for allergy symptoms accompanied by restlessness.",
+                        "Natrum Mur for hay fever with watery eyes and sneezing.",
+                        "Sabadilla for sneezing and itching in the nose and throat.",
+                        "Euphrasia for allergies with burning and watering eyes."
+                    ]
+                },
+                {
+                    issue: "Muscle Pain",
+                    suggestions: [
+                        "Arnica Montana for muscle soreness and bruising.",
+                        "Rhus Toxicodendron for muscle stiffness and pain worse with rest.",
+                        "Bryonia for muscle pain aggravated by movement.",
+                        "Calcarea Carbonica for muscle cramps and weakness.",
+                        "Magnesia Phosphorica for muscle spasms and cramps."
+                    ]
+                },
+                {
+                    issue: "Menstrual Disorders",
+                    suggestions: [
+                        "Pulsatilla for irregular and painful periods.",
+                        "Sepia for heavy menstrual bleeding and fatigue.",
+                        "Lachesis for menstrual disorders with emotional symptoms.",
+                        "Calcarea Carbonica for prolonged and profuse periods.",
+                        "Natrum Mur for menstrual headaches and bloating."
+                    ]
+                },
+                {
+                    issue: "Respiratory Issues",
+                    suggestions: [
+                        "Antimonium Tartaricum for rattling cough and difficulty breathing.",
+                        "Hepar Sulphuris for cough with thick, yellow mucus.",
+                        "Kali Bichromicum for sinusitis with stringy nasal discharge.",
+                        "Spongia Tosta for dry, barking cough.",
+                        "Aconitum Napellus for sudden onset of respiratory symptoms."
+                    ]
+                },
+                {
+                    issue: "Joint Pain",
+                    suggestions: [
+                        "Rhus Toxicodendron for joint pain with stiffness relieved by movement.",
+                        "Bryonia for joint pain worsened by movement.",
+                        "Arnica Montana for joint pain after injury or overexertion.",
+                        "Colchicum for joint pain aggravated by touch and cold.",
+                        "Calcarea Fluorica for arthritic pain and joint weakness."
+                    ]
+                },
+                // Additional health issues and suggestions
+                {
+                    issue: "Migraine",
+                    suggestions: [
+                        "Iris Versicolor for migraines with visual disturbances.",
+                        "Sanguinaria Canadensis for right-sided migraines with nausea.",
+                        "Belladonna for throbbing migraines with sensitivity to light and noise.",
+                        "Nux Vomica for migraines triggered by stress and overwork.",
+                        "Glonoinum for migraines with sudden onset and congestion."
+                    ]
+                },
+                {
+                    issue: "Anemia",
+                    suggestions: [
+                        "Ferrum Phosphoricum for early stages of anemia with fatigue.",
+                        "China Officinalis for anemia with weakness and pale complexion.",
+                        "Natrum Muriaticum for anemia with a desire for salty food.",
+                        "Arsenicum Album for anemia with anxiety and restlessness.",
+                        "Pulsatilla for anemia associated with irregular menstruation."
+                    ]
+                },
+                {
+                    issue: "Acne",
+                    suggestions: [
+                        "Kali Bromatum for acne on the face, chest, and shoulders.",
+                        "Hepar Sulphuris for painful, pus-filled acne.",
+                        "Berberis Aquifolium for acne with dull, yellowish skin.",
+                        "Silicea for acne with slow healing and scarring.",
+                        "Calcarea Sulphurica for acne with yellow, purulent discharge."
+                    ]
+                },
+                {
+                    issue: "Hypertension",
+                    suggestions: [
+                        "Belladonna for sudden, intense hypertension with throbbing headaches.",
+                        "Aconitum Napellus for hypertension due to sudden shock or fear.",
+                        "Natrum Mur for hypertension with a tendency to retain water.",
+                        "Lachesis for hypertension with hot flashes and irritability.",
+                        "Crataegus Oxyacantha for hypertension with heart palpitations."
+                    ]
+                },
+                {
+                    issue: "Diabetes",
+                    suggestions: [
+                        "Syzygium Jambolanum for increased sugar levels in urine.",
+                        "Phosphoric Acid for diabetes with weakness and exhaustion.",
+                        "Lycopodium for diabetes with gas and bloating.",
+                        "Arsenicum Album for diabetes with anxiety and restlessness.",
+                        "Cephalandra Indica for diabetes with excessive thirst and dry mouth."
+                    ]
+                },
+                {
+                    issue: "Thyroid Disorders",
+                    suggestions: [
+                        "Iodum for hyperthyroidism with weight loss and increased appetite.",
+                        "Thyroidinum for hypothyroidism with sluggishness and fatigue.",
+                        "Lycopus Virginicus for thyroid disorders with heart palpitations.",
+                        "Natrum Mur for thyroid disorders with emotional suppression.",
+                        "Ferrum Iodatum for thyroid disorders with sensitivity to cold."
+                    ]
+                },
+                {
+                    issue: "Eczema",
+                    suggestions: [
+                        "Graphites for eczema with thick, oozing discharge.",
+                        "Sulphur for eczema with burning and itching.",
+                        "Rhus Toxicodendron for eczema with intense itching and swelling.",
+                        "Mezereum for eczema with crusty, cracked skin.",
+                        "Arsenicum Album for eczema with dry, scaly skin and restlessness."
+                    ]
+                },
+                {
+                    issue: "Urinary Tract Infection (UTI)",
+                    suggestions: [
+                        "Cantharis for UTI with burning and frequent urination.",
+                        "Apis Mellifica for UTI with stinging pain and swelling.",
+                        "Staphysagria for UTI caused by suppressed emotions.",
+                        "Sarsaparilla for UTI with pain at the end of urination.",
+                        "Pulsatilla for UTI with mild, changing symptoms."
+                    ]
+                },
+                {
+                    issue: "Osteoporosis",
+                    suggestions: [
+                        "Calcarea Phosphorica for osteoporosis with slow bone development.",
+                        "Symphytum Officinale for fractures and bone trauma.",
+                        "Silicea for osteoporosis with brittle nails and hair loss.",
+                        "Fluoric Acid for osteoporosis with joint pain and stiffness.",
+                        "Calcarea Carbonica for osteoporosis with calcium deficiency."
+                    ]
+                }
+            ];
+
+            // Get the select element to populate health issues
+            const healthIssueSelect = document.getElementById("healthIssue");
+
+            // Populate health issues in the dropdown
+            healthIssues.forEach((healthIssue) => {
+                const option = document.createElement("option");
+                option.value = healthIssue.issue;
+                option.textContent = healthIssue.issue;
+                healthIssueSelect.appendChild(option);
+            });
+
+            function getSuggestions() {
+                // Get the selected health issue
+                const selectedHealthIssue = healthIssueSelect.value;
+
+                // Find the corresponding suggestions
+                const selectedHealthIssueObj = healthIssues.find(issue => issue.issue === selectedHealthIssue);
+
+                // Get the ul element to append suggestions
+                const suggestionsList = document.getElementById("suggestionsList");
+
+                // Clear existing suggestions
+                suggestionsList.innerHTML = "";
+
+                // Append new suggestions
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${selectedHealthIssueObj.issue}</strong><ul>${selectedHealthIssueObj.suggestions.map(suggestion => `<li>${suggestion}</li>`).join('')}</ul>`;
+                suggestionsList.appendChild(li);
+            }
+        </script>
+    </div>
+</body>
+
+</html>

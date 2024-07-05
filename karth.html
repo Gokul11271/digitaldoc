@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Intake Calculator</title>
+    <style>
+        h1,ul,li{
+    display: inline;
+}
+nav{
+    padding: 20px;
+}
+ul{
+
+ margin-left:70%;
+ 
+}
+li:hover{
+    color: grey;
+    cursor: pointer;
+}
+.searchbar{
+  padding: 30px;
+    text-align: center;
+}
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color:grey;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color:darkcyan;
+  background-color: transparent;
+  text-decoration: underline;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3498db;
+            padding: 20px;
+            color: #fff;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+        body{
+    background: #3399ff;
+  }
+  
+  
+ 
+  body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+    <nav style="background-color: black; color: aliceblue;">
+        <h1 style="color: white;">Digital Doc🩺</h1>
+        <ul>
+            <li><a href="./calories.html " target="_blank>">CAL|</a></li>
+            <li><a href="BMI.html" target="_blank">BMI|</a> </li>
+            <li><a href="./karth.html" target="_blank">PC|</a></li>
+            <li><a href="./protein.html" target="_blank">|PFD</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h2>Protein Intake Calculator</h2>
+    </header>
+
+    <main>
+        <form id="proteinForm">
+            <label for="weight">Enter your weight in kilograms:</label>
+            <input type="number" id="weight" name="weight" step="0.1" required>
+            <button type="button" onclick="calculateProteinIntake()">Calculate</button>
+        </form>
+
+        <result id="result"></result>
+    </main>
+
+    <script>
+        function calculateProteinIntake() {
+            var weight = document.getElementById('weight').value;
+            var proteinIntake = weight * 0.8;
+
+            document.getElementById('result').innerHTML = "Based on the general guideline, your recommended daily protein intake is: " + proteinIntake.toFixed(2) + " grams.";
+        }
+    </script>
+
+</body>
+</html>
